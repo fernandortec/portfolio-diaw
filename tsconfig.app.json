@@ -8,7 +8,9 @@
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
 
-    
+    "paths": {
+      "@/*": ["./*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -24,5 +26,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "lib", "components"]
 }

@@ -1,9 +1,11 @@
+import { AboutMeDock } from "@/components/ui/about-me-dock";
 import PatternWaves from "@/components/ui/pattern-waves/index.jsx";
 import type { ReactElement } from "react";
 
 export function App (): ReactElement {
   return (
     <main className="portfolio-shell">
+      <AboutMeDock />
       <PatternWaves
         preset="silk"
         color="#b8f5ee"

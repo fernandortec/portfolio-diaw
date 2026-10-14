@@ -123,3 +123,35 @@
     @apply bg-background text-foreground;
   }
 }
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #050b10;
+}
+
+.portfolio-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+}
+
+.portfolio-waves {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  pointer-events: none;
+}
+
+.portfolio-content {
+  position: relative;
+  z-index: 1;
+}

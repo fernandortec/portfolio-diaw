@@ -1,39 +1,21 @@
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import { PixelSwap } from "@/components/ui/pixel-swap";
+import PatternWaves from "@/components/ui/pattern-waves/index.jsx";
 import type { ReactElement } from "react";
-
 
 export function App (): ReactElement {
   return (
-    <div>
-
-      <PixelSwap
-        active={true}
-        onActiveChange={() => {}}
-        onComplete={() => {}}
-        style=""
-        firstContent={
-          <div className="click-prompt">
-            <span>Click me</span>
-          </div>
-        }
-        secondContent={
-          <div className="found-message">
-            <span>You found me</span>
-          </div>
-        }
-        pixelSize={64}
-        gap={0}
-        pixelRadius={0}
-        pixelSpin={0}
-        pixelScale={0.35}
-        duration={1400}
-        pixelDuration={450}
-        pattern="random"
-        randomness={0}
-        fade
-        trigger="hover"
+    <main className="portfolio-shell">
+      <PatternWaves
+        preset="silk"
+        color="#b8f5ee"
+        backgroundColor="transparent"
+        fade="edges"
+        fadeSize={0.38}
+        opacity={0.85}
+        interactive
+        cursorSize={70}
+        cursorStrength={0.55}
+        className="portfolio-waves"
       />
-    </div>
+    </main>
   )
 }

@@ -19,7 +19,7 @@ Portfólio pessoal desenvolvido para apresentar minha trajetória como engenheir
 ## Links
 
 - **Repositório:** [github.com/fernandortec/portfolio-diaw](https://github.com/fernandortec/portfolio-diaw)
-- **Site publicado:** [fernandortec.netlify.app](https://fernandortec.netlify.app/)
+- **Site publicado:** [portfolio-diaw-eight.vercel.app](https://portfolio-diaw-eight.vercel.app/)
 
 A versão publicada ainda não inclui todas as alterações disponíveis neste código.
 
@@ -125,7 +125,7 @@ O projeto não requer variáveis de ambiente para a funcionalidade atual. Não h
 
 ## Deploy
 
-O site está hospedado na **Netlify**: [fernandortec.netlify.app](https://fernandortec.netlify.app/).
+O site está hospedado na **vercel**: [portfolio-diaw-eight.vercel.app](https://portfolio-diaw-eight.vercel.app/).
 
 Para publicar esta versão como site estático:
 

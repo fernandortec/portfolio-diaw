@@ -4,6 +4,7 @@ import {
   motion,
   MotionValue,
   useMotionValue,
+  useReducedMotion,
   useSpring,
   useTransform,
 } from "motion/react"
@@ -27,7 +28,7 @@ const DEFAULT_DISTANCE = 140
 const DEFAULT_DISABLEMAGNIFICATION = false
 
 const dockVariants = cva(
-  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md"
+  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex min-h-[72px] max-w-full w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md"
 )
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
@@ -45,6 +46,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     ref
   ) => {
     const mouseX = useMotionValue(Infinity)
+    const reducedMotion = useReducedMotion()
 
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
@@ -57,7 +59,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
             mouseX: mouseX,
             size: iconSize,
             magnification: iconMagnification,
-            disableMagnification: disableMagnification,
+            disableMagnification: disableMagnification || !!reducedMotion,
             distance: iconDistance,
           })
         }
@@ -110,7 +112,6 @@ const DockIcon = ({
   ...props
 }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null)
-  const padding = Math.max(6, size * 0.2)
   const defaultMouseX = useMotionValue(Infinity)
 
   const distanceCalc = useTransform(mouseX ?? defaultMouseX, (val: number) => {
@@ -131,19 +132,19 @@ const DockIcon = ({
     stiffness: 150,
     damping: 12,
   })
+  const iconScale = useTransform(scaleSize, (value) => value / size)
 
   return (
     <motion.div
       ref={ref}
-      style={{ width: scaleSize, height: scaleSize, padding }}
+      style={{ width: scaleSize, height: scaleSize }}
       className={cn(
-        "flex aspect-square cursor-pointer items-center justify-center rounded-full",
-        disableMagnification && "hover:bg-muted-foreground transition-colors",
+        "flex shrink-0 aspect-square items-center justify-center rounded-full",
         className
       )}
       {...props}
     >
-      <div>{children}</div>
+      <motion.div style={{ scale: iconScale }}>{children}</motion.div>
     </motion.div>
   )
 }

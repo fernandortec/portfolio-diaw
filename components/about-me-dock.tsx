@@ -9,6 +9,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Dock, DockIcon } from "@/components/ui/dock"
+import { useLocale } from "@/components/context/use-locale"
 
 const links = [
   { href: "https://github.com/fernandortec", icon: Icons.github, label: "GitHub" },
@@ -17,8 +18,10 @@ const links = [
   { href: "https://wa.me/5531993750285", icon: Icons.whatsapp, label: "WhatsApp" },
 ]
 
-export function AboutMeDock({ language, onLanguageChange }: { language: "pt" | "en"; onLanguageChange: (language: "pt" | "en") => void }) {
-  const copy = language === "pt" ? {
+export function AboutMeDock() {
+  const { locale, setLocale } = useLocale()
+
+  const copy = locale === "pt-BR" ? {
     portfolio: "FERNANDO RODRIGUES · PORTFÓLIO",
     title: "Engenheiro de Software Full Stack",
     bio: "Desenvolvo aplicações web e APIs com TypeScript, React e Node.js. Minha experiência inclui sistemas de reservas, pagamentos e integrações bancárias.",
@@ -37,11 +40,11 @@ export function AboutMeDock({ language, onLanguageChange }: { language: "pt" | "
   }
   const localizedLinks = links.map((link) => link.label === "Enviar e-mail" ? { ...link, label: copy.email } : link)
   return (
-    <section lang={language === "pt" ? "pt-BR" : "en"} className="relative z-[1] mx-auto flex min-h-[min(52rem,100svh)] max-w-6xl flex-col items-center justify-center px-5 py-20 text-center sm:px-8" aria-labelledby="portfolio-name">
-      <div className="language-switcher" role="group" aria-label={language === "pt" ? "Selecionar idioma" : "Choose language"}>
-        <Globe2 aria-hidden="true" className="language-globe" />
-        {(["en", "pt"] as const).map((option) => (
-          <button key={option} type="button" lang={option} aria-pressed={language === option} onClick={() => onLanguageChange(option)}>
+    <section className="relative z-[1] mx-auto flex min-h-[min(52rem,100svh)] max-w-6xl flex-col items-center justify-center px-5 py-20 text-center sm:px-8">
+      <div className="language-switcher" role="group">
+        <Globe2 className="language-globe" />
+        {(["en-US", "pt-BR"] as const).map((option) => (
+          <button key={option} type="button" onClick={() => setLocale(option)}>
             {option.toUpperCase()}
           </button>
         ))}
@@ -53,11 +56,11 @@ export function AboutMeDock({ language, onLanguageChange }: { language: "pt" | "
         <p className="mx-auto mt-[0.85rem] max-w-[34rem] text-[clamp(0.95rem,1.5vw,1.05rem)] leading-[1.75] text-charcoal-300 max-[480px]:max-w-[25rem]">
           {copy.bio}
         </p>
-        <p className="mt-[1.05rem] inline-flex items-center gap-[0.4rem] text-[0.86rem] text-charcoal-200"><MapPin aria-hidden="true" className="size-[0.95rem] text-steel-blue-200" /> {copy.location}</p>
+        <p className="mt-[1.05rem] inline-flex items-center gap-[0.4rem] text-[0.86rem] text-charcoal-200"><MapPin className="size-[0.95rem] text-steel-blue-200" /> {copy.location}</p>
       </div>
 
       <TooltipProvider>
-        <nav aria-label={copy.links}>
+        <nav>
           <Dock iconSize={48} iconMagnification={56} direction="middle" className="mt-8 border-charcoal-700/70 bg-steel-blue-950/70 shadow-[0_16px_50px_rgb(0_0_0_/_28%),inset_0_1px_rgb(255_255_255_/_6%)]">
             {localizedLinks.map(({ href, icon: Icon, label }) => (
               <DockIcon key={label}>
@@ -66,7 +69,6 @@ export function AboutMeDock({ language, onLanguageChange }: { language: "pt" | "
                     render={
                       <a
                         href={href}
-                        aria-label={label}
                         className={cn(
                           buttonVariants({ variant: "ghost", size: "icon" }),
                           "flex size-11 items-center justify-center rounded-full text-steel-blue-100 transition-[color,background-color,transform] duration-[160ms] ease-in-out hover:-translate-y-0.5 hover:bg-steel-blue-800/60 hover:text-steel-blue-200 [&_svg]:size-[1.15rem]"
@@ -76,7 +78,7 @@ export function AboutMeDock({ language, onLanguageChange }: { language: "pt" | "
                       />
                     }
                   >
-                    <Icon aria-hidden="true" />
+                    <Icon />
                   </TooltipTrigger>
                   <TooltipContent><p>{label}</p></TooltipContent>
                 </Tooltip>
@@ -86,7 +88,7 @@ export function AboutMeDock({ language, onLanguageChange }: { language: "pt" | "
         </nav>
       </TooltipProvider>
       <a href="#projects" className="mt-8 inline-flex min-h-11 items-center gap-2 text-sm text-steel-blue-200 hover:text-steel-blue-50">
-        {copy.projects} <ArrowDown size={16} aria-hidden="true" />
+        {copy.projects} <ArrowDown size={16} />
       </a>
     </section>
   )

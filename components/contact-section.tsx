@@ -16,7 +16,6 @@ export function ContactSection({ language = "pt" }: { language?: "pt" | "en" }) 
     <footer
       id="contact"
       className="relative z-[1] mx-auto mb-10 grid w-[min(100%_-_2.5rem,_72rem)] grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)] items-stretch gap-[clamp(2rem,7vw,6rem)] rounded-[2rem] border border-[rgb(140_178_217_/_16%)] bg-[radial-gradient(ellipse_at_22%_0%,rgb(102_153_204_/_11%),transparent_46%),rgb(9_18_27_/_86%)] p-[clamp(1.5rem,4vw,3rem)] shadow-[inset_0_1px_rgb(255_255_255_/_4%)] max-[700px]:mb-4 max-[700px]:w-[min(100%_-_2rem,_42rem)] max-[700px]:grid-cols-1 max-[700px]:gap-8 max-[700px]:rounded-3xl max-[700px]:p-6"
-      aria-labelledby="contact-heading"
     >
       <div className="flex flex-col items-start justify-center">
         <p className="mb-[0.9rem] text-[0.68rem] font-[650] tracking-[0.23em] text-steel-blue-300">
@@ -35,7 +34,7 @@ export function ContactSection({ language = "pt" }: { language?: "pt" | "en" }) 
             className="inline-flex min-h-[2.8rem] items-center justify-center gap-[0.55rem] rounded-[0.8rem] border border-transparent bg-steel-blue-50 px-4 py-[0.7rem] text-[0.87rem] font-[540] text-steel-blue-950 no-underline transition-[transform,background-color,border-color] duration-150 hover:-translate-y-0.5 hover:bg-steel-blue-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue-300 motion-reduce:transition-none max-[420px]:w-full"
             href="mailto:fernandorfigueiredotec@gmail.com"
           >
-            <Mail aria-hidden="true" size={17} />
+            <Mail size={17} />
             {english ? "Get in touch" : "Entre em contato"}
           </a>
           <a
@@ -43,32 +42,30 @@ export function ContactSection({ language = "pt" }: { language?: "pt" | "en" }) 
             href="#projects-heading"
           >
             {english ? "View projects" : "Ver projetos"}
-            <ArrowRight aria-hidden="true" size={17} />
+            <ArrowRight size={17} />
           </a>
         </div>
       </div>
 
       <div className="flex min-h-60 flex-col items-center justify-center rounded-[1.4rem] border border-[rgb(140_178_217_/_13%)] bg-[linear-gradient(145deg,rgb(17_25_34_/_85%),rgb(9_18_27_/_92%))] p-8 text-center max-[700px]:min-h-52">
-        <nav className="flex gap-[0.7rem]" aria-label={english ? "Social media" : "Redes sociais"}>
+        <nav className="flex gap-[0.7rem]">
           {socialLinks.map(({ href, label, icon: Icon }) => (
             <a
               className="group relative grid size-11 place-items-center rounded-[0.8rem] border border-[rgb(140_178_217_/_14%)] text-steel-blue-100 transition-[border-color,background-color,color] duration-150 hover:border-[rgb(140_178_217_/_42%)] hover:bg-[rgb(25_51_77_/_55%)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue-300 motion-reduce:transition-none"
               key={label}
               href={href}
-              aria-label={label}
               target="_blank"
               rel="noreferrer"
             >
-              <Icon aria-hidden="true" width={19} height={19} />
-              <ArrowUpRight className="absolute right-[0.35rem] top-[0.35rem] opacity-0 transition-opacity duration-150 group-hover:opacity-80 motion-reduce:transition-none" aria-hidden="true" size={12} />
+              <Icon width={19} height={19} />
+              <ArrowUpRight className="absolute right-[0.35rem] top-[0.35rem] opacity-0 transition-opacity duration-150 group-hover:opacity-80 motion-reduce:transition-none" size={12} />
             </a>
           ))}
           <a
             className="grid size-11 place-items-center rounded-[0.8rem] border border-[rgb(140_178_217_/_14%)] text-steel-blue-100 transition-[border-color,background-color,color] duration-150 hover:border-[rgb(140_178_217_/_42%)] hover:bg-[rgb(25_51_77_/_55%)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue-300 motion-reduce:transition-none"
             href="mailto:fernandorfigueiredotec@gmail.com"
-            aria-label={english ? "Send an email" : "Enviar e-mail"}
           >
-            <Mail aria-hidden="true" size={18} />
+            <Mail size={18} />
           </a>
         </nav>
         <a

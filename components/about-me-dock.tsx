@@ -13,26 +13,26 @@ import { Dock, DockIcon } from "@/components/ui/dock"
 const links = [
   { href: "https://github.com/fernandortec", icon: Icons.github, label: "GitHub" },
   { href: "https://www.linkedin.com/in/fernandortec", icon: Icons.linkedin, label: "LinkedIn" },
-  { href: "https://fernandortec.me", icon: Globe2, label: "Personal website" },
-  { href: "mailto:fernandorfigueiredotec@gmail.com", icon: Icons.email, label: "Email Fernando" },
+  { href: "https://fernandortec.me", icon: Globe2, label: "Meu site" },
+  { href: "mailto:fernandorfigueiredotec@gmail.com", icon: Icons.email, label: "Enviar e-mail" },
 ]
 
 export function AboutMeDock() {
   return (
     <section className="relative z-[1] flex min-h-svh flex-col items-center justify-center px-5 py-8 text-center max-[480px]:px-4 max-[480px]:py-6" aria-labelledby="portfolio-name">
       <div className="max-w-[46rem]">
-        <p className="mb-[1.2rem] text-[0.72rem] font-[650] tracking-[0.23em] text-[#a4e8dd]">HELLO, I’M FERNANDO</p>
+        <p className="mb-[1.2rem] text-[0.72rem] font-[650] tracking-[0.23em] text-[#a4e8dd]">OLÁ, EU SOU O FERNANDO</p>
         <h1 id="portfolio-name" className="m-0 text-[clamp(2.7rem,8vw,6.4rem)] font-[620] leading-[0.98] tracking-[-0.075em] text-[#f2f8f7] [&_span]:text-[#a4e8dd]">Fernando Rodrigues<span>.</span></h1>
-        <p className="mt-[1.3rem] text-[clamp(1.1rem,2vw,1.4rem)] font-[450] tracking-[-0.02em] text-[#d2e4e1]">Full Stack Developer</p>
+        <p className="mt-[1.3rem] text-[clamp(1.1rem,2vw,1.4rem)] font-[450] tracking-[-0.02em] text-[#d2e4e1]">Engenheiro de Software Fullstack</p>
         <p className="mx-auto mt-[0.85rem] max-w-[34rem] text-[clamp(0.95rem,1.5vw,1.05rem)] leading-[1.75] text-[#9baead] max-[480px]:max-w-[25rem]">
-          I build thoughtful web experiences with TypeScript, React, and Node.js.
-          Always learning and exploring what’s next in web development.
+          Construo produtos digitais com TypeScript, React e Node.js, contribuindo
+          também para decisões de arquitetura e soluções que geram impacto.
         </p>
-        <p className="mt-[1.05rem] inline-flex items-center gap-[0.4rem] text-[0.86rem] text-[#aabbb9]"><MapPin aria-hidden="true" className="size-[0.95rem] text-[#a4e8dd]" /> Belo Horizonte, Brazil</p>
+        <p className="mt-[1.05rem] inline-flex items-center gap-[0.4rem] text-[0.86rem] text-[#aabbb9]"><MapPin aria-hidden="true" className="size-[0.95rem] text-[#a4e8dd]" /> Belo Horizonte, Brasil</p>
       </div>
 
       <TooltipProvider>
-        <nav aria-label="Fernando’s links">
+        <nav aria-label="Links do Fernando">
           <Dock direction="middle" className="mt-8 border-[rgb(206_241_236_/_18%)] bg-[rgb(8_19_24_/_58%)] shadow-[0_16px_50px_rgb(0_0_0_/_28%),inset_0_1px_rgb(255_255_255_/_6%)]">
             {links.map(({ href, icon: Icon, label }) => (
               <DockIcon key={label}>

@@ -1,7 +1,5 @@
 # Portfólio Profissional — Fernando Rodrigues
 
-[🇧🇷 Português](README.md) · [🇺🇸 English](README.en.md)
-
 Portfólio pessoal desenvolvido para apresentar minha trajetória como engenheiro de software full stack, meus projetos e formas de contato. O site usa React e TypeScript e se adapta a celulares, tablets e desktops.
 
 ## Índice
@@ -37,7 +35,6 @@ O portfólio apresenta uma introdução profissional, experiências e projetos s
 - Grade de projetos com imagens separadas das descrições e links para os repositórios no GitHub. Os cards têm altura conforme o conteúdo, sem cortes de texto.
 - Linha do tempo cronológica com marcos e datas confirmados no histórico público do GitHub; os cards também indicam quando não foi identificado um release formal.
 - Links de contato para e-mail, WhatsApp, LinkedIn e GitHub.
-- Seletor de idioma EN/PT com preferência salva no navegador.
 - Grade com uma, duas ou três colunas conforme a largura disponível.
 - Navegação por âncoras, link para pular ao conteúdo e indicação de foco no teclado.
 - Respeito à preferência por movimento reduzido no fundo e nos links sociais.
@@ -45,6 +42,7 @@ O portfólio apresenta uma introdução profissional, experiências e projetos s
 
 ### Itens planejados
 
+- Apresentação “Sobre Mim” em português e inglês.
 - Formulário com nome, e-mail e mensagem, com envio de e-mail.
 - Capturas de tela ou GIFs para todos os projetos apresentados.
 - Publicação do site e inclusão do link de produção.

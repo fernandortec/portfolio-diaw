@@ -5,7 +5,7 @@ import type { ReactElement } from "react";
 
 export function App (): ReactElement {
   return (
-    <main className="portfolio-shell">
+    <main className="relative isolate min-h-svh">
       <AboutMeDock />
       <PatternWaves
         preset="silk"
@@ -16,7 +16,7 @@ export function App (): ReactElement {
         interactive
         cursorSize={70}
         cursorStrength={0.55}
-        className="portfolio-waves"
+        className="fixed inset-0 z-0 h-dvh w-screen pointer-events-none"
       />
       <ProjectsGrid />
     </main>

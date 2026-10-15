@@ -4,74 +4,95 @@ import {
   FileTextIcon,
   GlobeIcon,
   InputIcon,
+  RocketIcon,
 } from "@radix-ui/react-icons"
 
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid"
 
-const features = [
+
+const LanguageBlock = (language: string) => (
+       <p className="mt-2 flex items-center gap-2 text-sm text-neutral-400">
+            {language && (
+              <span className="flex items-center gap-1.5">
+                <span className="size-3 rounded-full bg-blue-500" />
+                {language}
+              </span>
+            )}
+          </p>
+)
+
+const projects = [
   {
     Icon: FileTextIcon,
-    name: "Save your files",
-    description: "We automatically save your files as you type.",
-    href: "/",
-    cta: "Learn more",
-    background: (
-      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
-    ),
-    className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+    name: "pizza-shop-api",
+    description: "A Pizza shop API made for managers running a new business.",
+    href: "https://github.com/fernandortec/pizza-shop-api",
+    cta: "View on GitHub",
+    children: LanguageBlock("TypeScript"),
+    background: <div aria-hidden="true" />,
+    className: "lg:col-span-1",
   },
   {
     Icon: InputIcon,
-    name: "Full text search",
-    description: "Search through all your files in one place.",
-    href: "/",
-    cta: "Learn more",
-    background: (
-      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
-    ),
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
-  },
-  {
-    Icon: GlobeIcon,
-    name: "Multilingual",
-    description: "Supports 100+ languages and counting.",
-    href: "/",
-    cta: "Learn more",
-    background: (
-      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
-    ),
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
+    name: "coffee-shop-delivery",
+    description:
+      "Development of an application to manage a cafeteria's shopping cart: list products, add/remove items, fill in address, and display total.",
+    href: "https://github.com/fernandortec/coffee-shop-delivery",
+    cta: "View on GitHub",
+    children: LanguageBlock("TypeScript"),
+    background: <div aria-hidden="true" />,
+    className: "lg:col-span-1",
   },
   {
     Icon: CalendarIcon,
-    name: "Calendar",
-    description: "Use the calendar to filter your files by date.",
-    href: "/",
-    cta: "Learn more",
-    background: (
-      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
-    ),
-    className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+    name: "ignite-timer",
+    description: "Timer APP following @Rocketseat's React.JS module",
+    href: "https://github.com/fernandortec/ignite-timer",
+    cta: "View on GitHub",
+    children: LanguageBlock("TypeScript"),
+    background: <div aria-hidden="true" />,
+    className: "lg:col-span-1",
   },
   {
     Icon: BellIcon,
-    name: "Notifications",
+    name: "dt-money",
     description:
-      "Get notified when someone shares a file or mentions you in a comment.",
-    href: "/",
-    cta: "Learn more",
-    background: (
-      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
-    ),
-    className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
+      "Control your finances effectively with DT money, record income and expenses, calculate totals, search expenses and much more",
+    href: "https://github.com/fernandortec/dt-money",
+    cta: "View on GitHub",
+    children: LanguageBlock("TypeScript"),
+    background: <div aria-hidden="true" />,
+    className: "lg:col-span-1",
+  },
+  {
+    Icon: RocketIcon,
+    name: "gympass-style-app",
+    description: "A gympass style API made with fastify and NodeJS",
+    href: "https://github.com/fernandortec/gympass-style-app",
+    cta: "View on GitHub",
+    children: LanguageBlock("TypeScript"),
+    background: <div aria-hidden="true" />,
+    className: "lg:col-span-1",
+  },
+  {
+    Icon: GlobeIcon,
+    name: "tv-shows",
+    description:
+      "This project is a fake, streaming service inspired by Netflix. Its objective is to create a streaming platform/shows listing platform to try out the TV MAZE API.",
+    href: "https://github.com/fernandortec/tv-shows",
+    cta: "View on GitHub",
+    children: LanguageBlock("TypeScript"),
+    stars: 1,
+    background: <div aria-hidden="true" />,
+    className: "lg:col-span-1",
   },
 ]
 
 export function ProjectsGrid() {
   return (
-    <BentoGrid className="lg:grid-rows-3">
-      {features.map((feature) => (
-        <BentoCard key={feature.name} {...feature} />
+    <BentoGrid className="m-auto w-2/3 lg:grid-rows-2">
+      {projects.map((project) => (
+        <BentoCard key={project.name} {...project} />
       ))}
     </BentoGrid>
   )

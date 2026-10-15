@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle, RenderTarget, Texture } from 'ogl';
 
-import './index.css';
 
 const SURFACE_PRESETS = {
   silk: {
@@ -887,7 +886,7 @@ const PatternWaves = ({
     };
   }, []);
 
-  return <div ref={containerRef} className={`pattern-waves ${className}`.trim()} style={style} />;
+  return <div ref={containerRef} className={`h-full w-full overflow-hidden ${className}`.trim()} style={style} />;
 };
 
 export default PatternWaves;

@@ -10,8 +10,7 @@ export function App (): ReactElement {
         preset="silk"
         color="#b8f5ee"
         backgroundColor="transparent"
-        fade="edges"
-        fadeSize={0.38}
+        fade="none"
         opacity={0.85}
         interactive
         cursorSize={70}

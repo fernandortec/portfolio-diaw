@@ -1,7 +1,7 @@
+import { Globe2, MapPin } from "lucide-react"
 import { Icons } from "@/components/icons"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
 import {
   Tooltip,
   TooltipContent,
@@ -10,94 +10,57 @@ import {
 } from "@/components/ui/tooltip"
 import { Dock, DockIcon } from "@/components/ui/dock"
 
-const DATA = {
-  navbar: [
-    { href: "#", icon: Icons.home, label: "Home" },
-    { href: "#", icon: Icons.pencil, label: "Blog" },
-  ],
-  contact: {
-    social: {
-      GitHub: {
-        name: "GitHub",
-        url: "#",
-        icon: Icons.github,
-      },
-      LinkedIn: {
-        name: "LinkedIn",
-        url: "#",
-        icon: Icons.linkedin,
-      },
-      X: {
-        name: "X",
-        url: "#",
-        icon: Icons.x,
-      },
-      email: {
-        name: "Send Email",
-        url: "#",
-        icon: Icons.email,
-      },
-    },
-  },
-}
+const links = [
+  { href: "https://github.com/fernandortec", icon: Icons.github, label: "GitHub" },
+  { href: "https://www.linkedin.com/in/fernandortec", icon: Icons.linkedin, label: "LinkedIn" },
+  { href: "https://fernandortec.me", icon: Globe2, label: "Personal website" },
+  { href: "mailto:fernandorfigueiredotec@gmail.com", icon: Icons.email, label: "Email Fernando" },
+]
 
 export function AboutMeDock() {
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center px-4">
-      <span className="pointer-events-none bg-linear-to-b from-black to-gray-300/80 bg-clip-text text-center text-4xl leading-none font-semibold whitespace-pre-wrap text-transparent sm:text-6xl md:text-8xl dark:from-white dark:to-slate-900/10">
-        Fernando Rodrigues
-      </span>
+    <section className="portfolio-intro" aria-labelledby="portfolio-name">
+      <div className="portfolio-intro__copy">
+        <p className="portfolio-intro__eyebrow">HELLO, I’M FERNANDO</p>
+        <h1 id="portfolio-name">Fernando Rodrigues<span>.</span></h1>
+        <p className="portfolio-intro__role">Full Stack Developer</p>
+        <p className="portfolio-intro__bio">
+          I build thoughtful web experiences with TypeScript, React, and Node.js.
+          Always learning and exploring what’s next in web development.
+        </p>
+        <p className="portfolio-intro__location"><MapPin aria-hidden="true" /> Belo Horizonte, Brazil</p>
+      </div>
+
       <TooltipProvider>
-        <Dock direction="middle">
-          {DATA.navbar.map((item) => (
-            <DockIcon key={item.label}>
-              <Tooltip>
-                <TooltipTrigger
-                  render={
-                    <a
-                      href={item.href}
-                      aria-label={item.label}
-                      className={cn(
-                        buttonVariants({ variant: "ghost", size: "icon" }),
-                        "size-12 rounded-full"
-                      )}
-                    />
-                  }
-                >
-                  <item.icon className="size-4" />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{item.label}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
-          <Separator orientation="vertical" className="h-full" />
-          {Object.entries(DATA.contact.social).map(([name, social]) => (
-            <DockIcon key={name}>
-              <Tooltip>
-                <TooltipTrigger
-                  render={
-                    <a
-                      href={social.url}
-                      aria-label={social.name}
-                      className={cn(
-                        buttonVariants({ variant: "ghost", size: "icon" }),
-                        "size-12 rounded-full"
-                      )}
-                    />
-                  }
-                >
-                  <social.icon className="size-4" />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{name}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
-        </Dock>
+        <nav aria-label="Fernando’s links">
+          <Dock direction="middle" className="portfolio-dock">
+            {links.map(({ href, icon: Icon, label }) => (
+              <DockIcon key={label}>
+                <Tooltip>
+                  <TooltipTrigger
+                    render={
+                      <a
+                        href={href}
+                        aria-label={label}
+                        className={cn(
+                          buttonVariants({ variant: "ghost", size: "icon" }),
+                          "portfolio-dock__link"
+                        )}
+                        target={href.startsWith("http") ? "_blank" : undefined}
+                        rel={href.startsWith("http") ? "noreferrer" : undefined}
+                      />
+                    }
+                  >
+                    <Icon aria-hidden="true" />
+                  </TooltipTrigger>
+                  <TooltipContent><p>{label}</p></TooltipContent>
+                </Tooltip>
+              </DockIcon>
+            ))}
+          </Dock>
+        </nav>
       </TooltipProvider>
-    </div>
+      <p className="portfolio-intro__hint"><span /> TypeScript · React · Node.js</p>
+    </section>
   )
 }

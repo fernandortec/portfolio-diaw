@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useLocale } from "@/components/context/use-locale"
 import {
   ArrowUpRight,
@@ -39,7 +40,6 @@ type Project = {
   categoryEn: string
   stack?: string
   icon: LucideIcon
-  tall?: boolean
   preview?: keyof typeof previews
   date: string
 }
@@ -66,7 +66,6 @@ const projects: Project[] = [
     categoryEn: "Frontend · Streaming",
     stack: "React · TypeScript",
     icon: Film,
-    tall: true,
     preview: "tv",
     date: "2024-04-17",
   },
@@ -90,7 +89,6 @@ const projects: Project[] = [
     categoryEn: "Frontend · Productivity",
     stack: "React · TypeScript",
     icon: Clock3,
-    tall: true,
     preview: "timer",
     date: "2024-02-19",
   },
@@ -145,14 +143,14 @@ const projectsByDate = [...projects].sort((a, b) => b.date.localeCompare(a.date)
 
 const copy = {
   "pt-BR": {
-    label: "CÓDIGO E PRÁTICA",
-    heading: "Projetos",
-    description: "Aplicações e APIs que desenvolvi. O código de cada projeto está no GitHub.",
+    label: "02 / PROJETOS",
+    heading: "Ideias que viraram código.",
+    description: "Uma seleção do que construí para experimentar tecnologias e resolver problemas na prática.",
     repositories: "Todos os repositórios",
   },
   "en-US": {
-    label: "CODE IN PRACTICE",
-    heading: "Projects",
+    label: "02 / PROJECTS",
+    heading: "From idea to code.",
     description: "Applications and APIs I've built. Find the source code for each project on GitHub.",
     repositories: "All repositories",
   },
@@ -163,6 +161,8 @@ function formatProjectDate(date: string, locale: string) {
     new Date(`${date}T00:00:00Z`),
   )
 }
+
+
 
 function ProjectPreview({ kind }: { kind: NonNullable<Project["preview"]> }) {
   const { src } = previews[kind]

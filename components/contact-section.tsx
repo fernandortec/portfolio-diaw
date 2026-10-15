@@ -1,3 +1,4 @@
+import { useLocale } from "@/components/context/use-locale"
 import { ArrowRight, ArrowUpRight, Mail } from "lucide-react"
 import { Icons } from "@/components/icons"
 
@@ -9,8 +10,9 @@ const socialLinks = [
 
 const currentYear = new Date().getFullYear()
 
-export function ContactSection({ language = "pt" }: { language?: "pt" | "en" }) {
-  const english = language === "en"
+export function ContactSection() {
+  const { locale } = useLocale()
+  const english = locale === "en-US"
 
   return (
     <footer
@@ -22,12 +24,12 @@ export function ContactSection({ language = "pt" }: { language?: "pt" | "en" }) 
           {english ? "LET'S CONNECT" : "VAMOS CONVERSAR"}
         </p>
         <h2 id="contact-heading" className="m-0 text-[clamp(2.4rem,5.5vw,3.8rem)] font-[570] leading-[1.05] tracking-[-0.07em] text-steel-blue-50">
-          {english ? "Let's connect" : "Vamos nos conectar"}<span className="text-steel-blue-300">.</span>
+          {english ? "Let's connect" : "Tem algo em mente?"}{english && <span className="text-steel-blue-300">.</span>}
         </h2>
         <p className="mt-[1.2rem] max-w-[32rem] text-[clamp(1rem,1.7vw,1.17rem)] leading-[1.7] text-charcoal-300">
           {english
             ? "I'm open to talking about new projects, ideas, and opportunities. If you have something in mind, just reach out."
-            : "Estou aberto a conversar sobre novos projetos, ideias e oportunidades. Se você tem algo em mente, é só me chamar."}
+            : "Se quiser conversar sobre um projeto ou uma oportunidade, me manda uma mensagem."}
         </p>
         <div className="mt-8 flex flex-wrap gap-[0.7rem] max-[420px]:w-full max-[420px]:flex-col max-[420px]:items-stretch">
           <a
@@ -53,6 +55,7 @@ export function ContactSection({ language = "pt" }: { language?: "pt" | "en" }) 
             <a
               className="group relative grid size-11 place-items-center rounded-[0.8rem] border border-[rgb(140_178_217_/_14%)] text-steel-blue-100 transition-[border-color,background-color,color] duration-150 hover:border-[rgb(140_178_217_/_42%)] hover:bg-[rgb(25_51_77_/_55%)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue-300 motion-reduce:transition-none"
               key={label}
+              aria-label={label}
               href={href}
               target="_blank"
               rel="noreferrer"

@@ -10,8 +10,8 @@ export function App (): ReactElement {
       <AboutMeDock />
       <PatternWaves
         preset="silk"
-        color="#d466c9"
-        backgroundColor="#1c0f1a"
+        color="#6699cc"
+        backgroundColor="#09121b"
         fade="center"
         fadeSize={0.52}
         opacity={0.5}

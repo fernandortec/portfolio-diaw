@@ -21,19 +21,19 @@ export function AboutMeDock() {
   return (
     <section className="relative z-[1] flex min-h-svh flex-col items-center justify-center px-5 py-8 text-center max-[480px]:px-4 max-[480px]:py-6" aria-labelledby="portfolio-name">
       <div className="max-w-[46rem]">
-        <p className="mb-[1.2rem] text-[0.72rem] font-[650] tracking-[0.23em] text-[#a4e8dd]">OLÁ, EU SOU O FERNANDO</p>
-        <h1 id="portfolio-name" className="m-0 text-[clamp(2.7rem,8vw,6.4rem)] font-[620] leading-[0.98] tracking-[-0.075em] text-[#f2f8f7] [&_span]:text-[#a4e8dd]">Fernando Rodrigues<span>.</span></h1>
-        <p className="mt-[1.3rem] text-[clamp(1.1rem,2vw,1.4rem)] font-[450] tracking-[-0.02em] text-[#d2e4e1]">Engenheiro de Software Fullstack</p>
-        <p className="mx-auto mt-[0.85rem] max-w-[34rem] text-[clamp(0.95rem,1.5vw,1.05rem)] leading-[1.75] text-[#9baead] max-[480px]:max-w-[25rem]">
+        <p className="mb-[1.2rem] text-[0.72rem] font-[650] tracking-[0.23em] text-steel-blue-200">OLÁ, EU SOU O FERNANDO</p>
+        <h1 id="portfolio-name" className="m-0 text-[clamp(2.7rem,8vw,6.4rem)] font-[620] leading-[0.98] tracking-[-0.075em] text-steel-blue-50 [&_span]:text-steel-blue-200">Fernando Rodrigues<span>.</span></h1>
+        <p className="mt-[1.3rem] text-[clamp(1.1rem,2vw,1.4rem)] font-[450] tracking-[-0.02em] text-steel-blue-100">Engenheiro de Software Fullstack</p>
+        <p className="mx-auto mt-[0.85rem] max-w-[34rem] text-[clamp(0.95rem,1.5vw,1.05rem)] leading-[1.75] text-charcoal-300 max-[480px]:max-w-[25rem]">
           Construo produtos digitais com TypeScript, React e Node.js, contribuindo
           também para decisões de arquitetura e soluções que geram impacto.
         </p>
-        <p className="mt-[1.05rem] inline-flex items-center gap-[0.4rem] text-[0.86rem] text-[#aabbb9]"><MapPin aria-hidden="true" className="size-[0.95rem] text-[#a4e8dd]" /> Belo Horizonte, Brasil</p>
+        <p className="mt-[1.05rem] inline-flex items-center gap-[0.4rem] text-[0.86rem] text-charcoal-200"><MapPin aria-hidden="true" className="size-[0.95rem] text-steel-blue-200" /> Belo Horizonte, Brasil</p>
       </div>
 
       <TooltipProvider>
         <nav aria-label="Links do Fernando">
-          <Dock direction="middle" className="mt-8 border-[rgb(206_241_236_/_18%)] bg-[rgb(8_19_24_/_58%)] shadow-[0_16px_50px_rgb(0_0_0_/_28%),inset_0_1px_rgb(255_255_255_/_6%)]">
+          <Dock direction="middle" className="mt-8 border-charcoal-700/70 bg-steel-blue-950/70 shadow-[0_16px_50px_rgb(0_0_0_/_28%),inset_0_1px_rgb(255_255_255_/_6%)]">
             {links.map(({ href, icon: Icon, label }) => (
               <DockIcon key={label}>
                 <Tooltip>
@@ -44,7 +44,7 @@ export function AboutMeDock() {
                         aria-label={label}
                         className={cn(
                           buttonVariants({ variant: "ghost", size: "icon" }),
-                          "flex size-11 items-center justify-center rounded-full text-[#d5e7e3] transition-[color,background-color,transform] duration-[160ms] ease-in-out hover:-translate-y-0.5 hover:bg-[rgb(164_232_221_/_14%)] hover:text-[#a4e8dd] [&_svg]:size-[1.15rem]"
+                          "flex size-11 items-center justify-center rounded-full text-steel-blue-100 transition-[color,background-color,transform] duration-[160ms] ease-in-out hover:-translate-y-0.5 hover:bg-steel-blue-800/60 hover:text-steel-blue-200 [&_svg]:size-[1.15rem]"
                         )}
                         target={href.startsWith("http") ? "_blank" : undefined}
                         rel={href.startsWith("http") ? "noreferrer" : undefined}
@@ -60,7 +60,7 @@ export function AboutMeDock() {
           </Dock>
         </nav>
       </TooltipProvider>
-      <p className="mt-[1.35rem] inline-flex items-center gap-[0.55rem] text-[0.76rem] text-[#829492]"><span className="size-[0.45rem] rounded-full bg-[#a4e8dd] shadow-[0_0_12px_rgb(164_232_221_/_70%)]" /> TypeScript · React · Node.js</p>
+      <p className="mt-[1.35rem] inline-flex items-center gap-[0.55rem] text-[0.76rem] text-charcoal-400"><span className="size-[0.45rem] rounded-full bg-steel-blue-300 shadow-[0_0_12px_rgb(140_178_217_/_70%)]" /> TypeScript · React · Node.js</p>
     </section>
   )
 }

@@ -14,7 +14,7 @@ const LanguageBlock = (language: string) => (
        <p className="mt-2 flex items-center gap-2 text-sm text-neutral-400">
             {language && (
               <span className="flex items-center gap-1.5">
-                <span className="size-3 rounded-full bg-blue-500" />
+                <span className="size-3 rounded-full bg-steel-blue-400" />
                 {language}
               </span>
             )}

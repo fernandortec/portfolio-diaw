@@ -52,18 +52,18 @@ export function ExperienceList() {
       aria-labelledby="experiences-heading"
     >
       <div className="mb-8">
-        <p className="mb-3 text-[0.68rem] font-[650] tracking-[0.23em] text-[#a4e8dd]">
+        <p className="mb-3 text-[0.68rem] font-[650] tracking-[0.23em] text-steel-blue-200">
           TRAJETÓRIA PROFISSIONAL
         </p>
         <h2
           id="experiences-heading"
-          className="m-0 text-[clamp(2rem,5vw,3.25rem)] font-[580] leading-tight tracking-[-0.06em] text-[#f2f8f7]"
+          className="m-0 text-[clamp(2rem,5vw,3.25rem)] font-[580] leading-tight tracking-[-0.06em] text-steel-blue-50"
         >
-          Experiências<span className="text-[#a4e8dd]">.</span>
+          Experiências<span className="text-steel-blue-200">.</span>
         </h2>
       </div>
 
-      <ol className="m-0 list-none border-t border-[rgb(206_241_236_/_16%)] p-0">
+      <ol className="m-0 list-none border-t border-charcoal-700/70 p-0">
         {experiences.map((experience, index) => (
           <motion.li
             key={`${experience.period}-${experience.title}`}
@@ -71,19 +71,19 @@ export function ExperienceList() {
             whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.65, delay: index * 0.12, ease: "easeOut" }}
-            className="grid grid-cols-[7.5rem_minmax(0,1fr)] gap-x-7 border-b border-[rgb(206_241_236_/_16%)] py-7 max-[560px]:grid-cols-1 max-[560px]:gap-y-3 max-[560px]:py-6"
+            className="grid grid-cols-[7.5rem_minmax(0,1fr)] gap-x-7 border-b border-charcoal-700/70 py-7 max-[560px]:grid-cols-1 max-[560px]:gap-y-3 max-[560px]:py-6"
           >
-            <p className="m-0 pt-1 text-[0.76rem] font-medium tracking-[0.08em] text-[#829492]">
+            <p className="m-0 pt-1 text-[0.76rem] font-medium tracking-[0.08em] text-charcoal-400">
               {experience.period}
             </p>
             <div>
-              <h3 className="m-0 text-[1.15rem] font-[560] tracking-[-0.025em] text-[#e5f0ed]">
+              <h3 className="m-0 text-[1.15rem] font-[560] tracking-[-0.025em] text-steel-blue-100">
                 {experience.title}
               </h3>
-              <p className="mb-0 mt-1 text-[0.86rem] text-[#a4e8dd]">
+              <p className="mb-0 mt-1 text-[0.86rem] text-steel-blue-200">
                 {experience.context}
               </p>
-              <p className="mb-0 mt-3 max-w-[39rem] text-[0.93rem] leading-[1.75] text-[#9baead]">
+              <p className="mb-0 mt-3 max-w-[39rem] text-[0.93rem] leading-[1.75] text-charcoal-300">
                 {experience.description}
               </p>
             </div>

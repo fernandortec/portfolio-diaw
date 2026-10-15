@@ -18,31 +18,31 @@ export function App() {
   }, [language]);
 
   return (
-    <>
+    <div className="relative isolate min-h-screen">
+      <div
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <PatternWaves
+          preset="silk"
+          color="#6699cc"
+          backgroundColor="#09121b"
+          fade="edges"
+          fadeSize={0.42}
+          opacity={0.3}
+          className="h-full w-full"
+        />
+      </div>
       <a className="skip-link" href="#content">Pular para o conteúdo</a>
-      <FloatingNavbar />
-      <main id="content" tabIndex={-1}>
-        <div className="relative isolate">
-          <div
-            className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-            aria-hidden="true"
-          >
-            <PatternWaves
-              preset="silk"
-              color="#6699cc"
-              backgroundColor="#09121b"
-              fade="edges"
-              fadeSize={0.52}
-              opacity={0.3}
-              className="h-full w-full"
-            />
-          </div>
+      <div className="relative z-10">
+        <FloatingNavbar language={language} />
+        <main id="content" tabIndex={-1}>
           <AboutMeDock language={language} onLanguageChange={setLanguage} />
-        </div>
-        <ExperienceList />
-        <ProjectsGrid />
-      </main>
-      <ContactSection />
-    </>
+          <ExperienceList />
+          <ProjectsGrid />
+        </main>
+        <ContactSection />
+      </div>
+    </div>
   );
 }

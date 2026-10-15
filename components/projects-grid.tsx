@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useLocale } from "@/components/context/use-locale"
 import {
   ArrowUpRight,
@@ -121,7 +120,6 @@ const projects: Project[] = [
     href: "https://github.com/fernandortec/collegetown-test",
     category: "Educação · Monitoramento",
     categoryEn: "Education · Monitoring",
-    stack: "Wayback Machine",
     icon: GraduationCap,
     preview: "collegetown",
     date: "2026-04-28",
@@ -139,19 +137,19 @@ const projects: Project[] = [
   },
 ]
 
-const projectsByDate = [...projects].sort((a, b) => b.date.localeCompare(a.date))
+const projectsByDate = [...projects].sort((a, b) => a.date.localeCompare(b.date))
 
 const copy = {
   "pt-BR": {
     label: "02 / PROJETOS",
-    heading: "Ideias que viraram código.",
-    description: "Uma seleção do que construí para experimentar tecnologias e resolver problemas na prática.",
+    heading: "Projetos",
+    description: "Aplicações e APIs que desenvolvi.",
     repositories: "Todos os repositórios",
   },
   "en-US": {
     label: "02 / PROJECTS",
-    heading: "From idea to code.",
-    description: "Applications and APIs I've built. Find the source code for each project on GitHub.",
+    heading: "Projects",
+    description: "Applications and APIs I've built.",
     repositories: "All repositories",
   },
 }
@@ -162,14 +160,13 @@ function formatProjectDate(date: string, locale: string) {
   )
 }
 
-
-
-function ProjectPreview({ kind }: { kind: NonNullable<Project["preview"]> }) {
+function ProjectPreview({ kind, name }: { kind: NonNullable<Project["preview"]>; name: string }) {
   const { src } = previews[kind]
 
   return (
     <img
       className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.025] motion-reduce:transform-none motion-reduce:transition-none"
+      alt={`Preview — ${name}`}
       src={src}
       loading="lazy"
       decoding="async"
@@ -179,42 +176,25 @@ function ProjectPreview({ kind }: { kind: NonNullable<Project["preview"]> }) {
   )
 }
 
-function ProjectCard({ project, locale }: {
-  project: Project
-  locale: string
-}) {
-  const { name, description, descriptionEn, href, category, categoryEn, stack, icon: Icon, preview, date, tall } = project
-  const formattedDate = formatProjectDate(date, locale)
-
+function ProjectCard({ project, locale, index }: { project: Project; locale: string; index: number }) {
+  const { name, description, descriptionEn, href, category, categoryEn, stack, icon: Icon, preview, date } = project
+  const english = locale === "en-US"
   return (
-    <a
-      className={`group flex aspect-square min-w-0 flex-col overflow-hidden rounded-xl border border-steel-blue-200/15 bg-[#101d29] transition-colors hover:border-steel-blue-300/60 motion-reduce:transition-none ${tall ? "lg:row-span-2 lg:aspect-auto" : ""}`}
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-    >
-      <div className="h-[48%] min-h-32 shrink-0 overflow-hidden border-b border-steel-blue-200/10 bg-steel-blue-950">
-        {preview ? (
-          <ProjectPreview kind={preview} />
-        ) : (
-          <div className="flex h-full items-center justify-center bg-[radial-gradient(ellipse_at_center,#19334d,#0d1926)]">
-            <Icon className="size-12 text-steel-blue-300" strokeWidth={1.25} />
+    <a className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-steel-blue-300/15 bg-[#0c1722ed] transition-[border-color,transform] duration-200 hover:-translate-y-1 hover:border-steel-blue-300/45 motion-reduce:transform-none motion-reduce:transition-none" href={href} target="_blank" rel="noreferrer">
+      <div data-variant={index % 3 === 1 ? "alternate" : "default"} className="relative aspect-[16/10] overflow-hidden border-b border-steel-blue-300/10 p-6 pb-0">
+        <div className="flex h-[27px] items-center gap-[5px] rounded-t-[7px] border border-white/[0.07] border-b-0 bg-[#111923] px-[10px]" aria-hidden="true"><span className="size-[5px] rounded-full bg-white/20" /><span className="size-[5px] rounded-full bg-white/20" /><span className="size-[5px] rounded-full bg-white/20" /><span className="ml-auto mr-auto pr-5 text-[9px] text-charcoal-300">{name.toLowerCase().replaceAll(" ", "-")}</span><span className="size-[5px] rounded-full bg-white/20" /></div>
+        {preview ? <div className="h-[calc(100%-27px)] overflow-hidden border border-white/[0.07] border-b-0"><ProjectPreview kind={preview} name={name} /></div> : (
+          <div className="grid h-[calc(100%-27px)] place-items-center bg-[#0a141f]">
+            <Icon size={54} strokeWidth={1.1} className="text-steel-blue-300" aria-hidden="true" />
           </div>
         )}
+        <span className="absolute bottom-4 right-4 grid size-10 place-items-center rounded-full bg-steel-blue-50 text-steel-blue-950 shadow-[0_4px_20px_#0004] transition-transform duration-200 group-hover:rotate-45 motion-reduce:transform-none motion-reduce:transition-none"><ArrowUpRight size={20} /></span>
       </div>
-      <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="min-w-0 text-xl font-semibold leading-snug tracking-tight">{name}</h3>
-          <ArrowUpRight className="mt-1 shrink-0 text-steel-blue-300" size={18} />
-        </div>
-        <p className="mt-2 text-xs font-medium text-steel-blue-200">{locale === "en-US" ? categoryEn : category}</p>
-        <p className="mt-3 line-clamp-2 text-sm leading-6 text-charcoal-200">
-          {locale === "en-US" ? descriptionEn : description}
-        </p>
-        <div className="mt-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pt-5 text-xs text-steel-blue-200">
-          {stack && <span>{stack}</span>}
-          <time className="tabular-nums text-charcoal-300" dateTime={date}>{formattedDate}</time>
-        </div>
+      <div className="flex flex-1 flex-col p-[1.4rem] min-[601px]:p-[1.7rem]">
+        <div className="mb-3 flex items-center justify-between gap-3 text-[11px] tracking-wide text-charcoal-300"><span>{english ? categoryEn : category}</span><span className="font-mono text-charcoal-500">{String(index + 1).padStart(2, "0")}</span></div>
+        <h3 className="text-2xl font-semibold tracking-tight">{name}</h3>
+        <p className="mt-3 text-sm leading-6 text-charcoal-300">{english ? descriptionEn : description}</p>
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-6 text-xs">{stack && <span className="text-steel-blue-200">{stack}</span>}<time className="ml-auto text-charcoal-400" dateTime={date}>{formatProjectDate(date, locale)}</time></div>
       </div>
     </a>
   )
@@ -223,34 +203,13 @@ function ProjectCard({ project, locale }: {
 export function ProjectsGrid() {
   const { locale } = useLocale()
   const text = copy[locale]
-
   return (
-    <section className="page-section pb-20 sm:pb-28" id="projects">
-      <header className="mb-8 flex flex-wrap items-end justify-between gap-5">
-        <div>
-          <p className="section-label">{text.label}</p>
-          <h2 id="projects-heading" className="section-heading">{text.heading}</h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-charcoal-300">{text.description}</p>
-        </div>
-        <a
-          className="inline-flex min-h-11 items-center gap-2 text-sm text-steel-blue-200 hover:text-steel-blue-50"
-          href="https://github.com/fernandortec"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {text.repositories} <ArrowUpRight size={16} />
-        </a>
+    <section className="page-section pb-24 sm:pb-32" id="projects" aria-labelledby="projects-heading">
+      <header className="mb-10 flex flex-wrap items-end justify-between gap-6">
+        <div><p className="section-label">{text.label}</p><h2 id="projects-heading" className="section-heading">{text.heading}</h2><p className="mt-4 max-w-lg text-base leading-7 text-charcoal-300">{text.description}</p></div>
+        <a className="inline-flex min-h-11 items-center gap-2 text-sm text-steel-blue-200 hover:text-white" href="https://github.com/fernandortec" target="_blank" rel="noreferrer">{text.repositories}<ArrowUpRight size={16} /></a>
       </header>
-
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {projectsByDate.map((project) => (
-          <ProjectCard
-            key={project.name}
-            project={project}
-            locale={locale}
-          />
-        ))}
-      </div>
+      <div className="grid grid-cols-1 gap-6 min-[601px]:grid-cols-2 min-[601px]:gap-7">{projectsByDate.map((project, index) => <ProjectCard key={project.name} project={project} locale={locale} index={index} />)}</div>
     </section>
   )
 }

@@ -19,33 +19,29 @@ Portfólio pessoal desenvolvido para apresentar minha trajetória como engenheir
 ## Links
 
 - **Repositório:** [github.com/fernandortec/portfolio-diaw](https://github.com/fernandortec/portfolio-diaw)
-- **Site publicado:** pendente de deploy.
-- **Protótipo no Figma:** pendente de inclusão.
+- **Site publicado:** [fernandortec.netlify.app](https://fernandortec.netlify.app/)
+
+A versão publicada ainda não inclui todas as alterações disponíveis neste código.
 
 ## Sobre o projeto
 
 Este site reúne informações profissionais em uma única página para que recrutadores, equipes e possíveis clientes possam conhecer minha experiência, explorar projetos e entrar em contato.
 
-O portfólio apresenta uma introdução profissional, experiências e projetos selecionados, além de links para GitHub, LinkedIn, WhatsApp e e-mail. Foi desenvolvido como projeto acadêmico da disciplina de Desenvolvimento e Integração de Aplicações Web (DIAW), no curso de Engenharia de Software.
+O portfólio apresenta uma introdução profissional, experiências e projetos, além de links para GitHub, LinkedIn, WhatsApp e e-mail. Foi desenvolvido como projeto acadêmico da disciplina de Desenvolvimento e Integração de Aplicações Web (DIAW), no curso de Engenharia de Software.
 
 ## Funcionalidades
 
-- Apresentação profissional e localização.
+- Apresentação em português e inglês com formação, experiência e localização.
 - Seção de experiências profissionais com cargo, organização, período e descrição.
-- Grade de projetos com imagens separadas das descrições e links para os repositórios no GitHub. Os cards têm altura conforme o conteúdo, sem cortes de texto.
-- Grade de projetos ordenada do mais recente ao mais antigo, com a data do primeiro marco no histórico público do GitHub em destaque em cada card.
+- Oito projetos com descrição, data e link para o repositório no GitHub. Cinco têm capturas de tela; os demais exibem um ícone.
+- Grade de projetos ordenada do mais antigo ao mais recente, com datas definidas nos dados de cada projeto.
 - Links de contato para e-mail, WhatsApp, LinkedIn e GitHub.
-- Grade com uma, duas ou três colunas conforme a largura disponível.
+- Grade de projetos com uma coluna em telas estreitas e duas em telas maiores.
 - Navegação por âncoras, link para pular ao conteúdo e indicação de foco no teclado.
 - Respeito à preferência por movimento reduzido no fundo e nos links sociais.
-- Fundo animado restrito à apresentação e links sociais com ampliação ao passar o mouse.
-
-### Itens planejados
-
-- Apresentação “Sobre Mim” em português e inglês.
-- Formulário com nome, e-mail e mensagem, com envio de e-mail.
-- Capturas de tela ou GIFs para todos os projetos apresentados.
-- Publicação do site e inclusão do link de produção.
+- Fundo animado fixo que acompanha a página durante a navegação.
+- Alternância entre português e inglês nas seções principais.
+- Formulário com nome, e-mail e mensagem, validação nativa do navegador e abertura de um rascunho no aplicativo de e-mail. O envio depende do visitante.
 
 ## Projetos apresentados
 
@@ -59,8 +55,8 @@ Os cards apontam para os repositórios correspondentes no GitHub.
 | Ignite Timer | Timer para organizar ciclos de foco e trabalho. | React, TypeScript | [Repositório](https://github.com/fernandortec/ignite-timer) |
 | Pizza Shop API | API para gestão de pedidos de uma pizzaria. | TypeScript | [Repositório](https://github.com/fernandortec/pizza-shop-api) |
 | Gympass Style App | API de academias inspirada no Gympass. | TypeScript, Fastify | [Repositório](https://github.com/fernandortec/gympass-style-app) |
-| Collegetown Test | Ferramenta para comparar diretórios universitários atuais e arquivados. | Wayback Machine | [Repositório](https://github.com/fernandortec/collegetown-test) |
-| Ignite Shop | Catálogo de camisetas e produtos. | — | [Repositório](https://github.com/fernandortec/ignite-shop) |
+| Collegetown | Compara diretórios universitários com versões arquivadas no Wayback Machine. | Não exibidas no card | [Repositório](https://github.com/fernandortec/collegetown-test) |
+| Ignite Shop | Loja de camisetas com catálogo de produtos. | Não exibidas no card | [Repositório](https://github.com/fernandortec/ignite-shop) |
 
 ## Tecnologias
 
@@ -71,8 +67,10 @@ Os cards apontam para os repositórios correspondentes no GitHub.
 - **Vite 8** — servidor de desenvolvimento e build.
 - **Tailwind CSS 4** — estilos responsivos e tokens visuais.
 - **Motion** — animações de interface.
-- **Lucide React** e **Radix UI Icons** — ícones.
-- **Base UI** — componentes de interface.
+- **Lucide React** e SVGs locais — ícones.
+- **Base UI** e componentes baseados em **shadcn/ui** — componentes de interface.
+- **OGL** — renderização WebGL do fundo animado.
+- **class-variance-authority**, **cn** e **tw-animate-css** — variantes de componentes, classes e animações CSS.
 - **Geist** — fonte da interface.
 
 ### Ferramentas de desenvolvimento
@@ -93,10 +91,10 @@ Navegador
       ├── Apresentação e links
       ├── Experiências
       ├── Projetos
-      └── Contato (links diretos)
+      └── Contato (formulário mailto e links diretos)
 ```
 
-O contato por e-mail usa um link `mailto:`. Ainda não há envio de mensagens por formulário nem serviço de backend integrado.
+O formulário de contato prepara uma mensagem em um aplicativo de e-mail por meio de `mailto:`. Não há serviço de backend para envio de mensagens.
 
 ## Instalação e execução
 
@@ -128,16 +126,15 @@ O projeto não requer variáveis de ambiente para a funcionalidade atual. Não h
 
 ## Deploy
 
-O projeto pode ser publicado como site estático na Vercel ou em outro serviço compatível com Vite.
+O site está hospedado na **Netlify**: [fernandortec.netlify.app](https://fernandortec.netlify.app/).
 
-Configuração básica para a Vercel:
+Para publicar esta versão como site estático:
 
-- **Framework Preset:** Vite
-- **Build Command:** `npm run build`
-- **Output Directory:** `dist`
-- **Install Command:** `npm install`
+- **Comando de instalação:** `npm ci`
+- **Comando de build:** `npm run build`
+- **Diretório de publicação:** `dist`
 
-Depois da publicação, substitua “pendente de deploy” na seção [Links](#links) pelo endereço público do site. A configuração do deploy ainda não está documentada neste repositório.
+O build gera os arquivos HTML, CSS, JavaScript e imagens usados pela hospedagem. Não há servidor próprio nem variáveis de ambiente obrigatórias. A versão online precisa de uma nova publicação para receber as alterações locais.
 
 ## Estrutura de pastas
 
@@ -146,7 +143,7 @@ Depois da publicação, substitua “pendente de deploy” na seção [Links](#l
 ├── components/
 │   ├── ui/                    # Componentes de interface reutilizáveis
 │   ├── about-me-dock.tsx      # Apresentação e links sociais
-│   ├── contact-section.tsx    # Links de contato e rodapé
+│   ├── contact-section.tsx    # Formulário, links de contato e rodapé
 │   ├── experience-list.tsx    # Lista de experiências
 │   └── projects-grid.tsx      # Galeria de projetos
 ├── lib/
@@ -180,3 +177,4 @@ As imagens abaixo são arquivos locais já incluídos no repositório. Elas ilus
 - [LinkedIn](https://www.linkedin.com/in/fernandortec)
 - [E-mail](mailto:fernandorfigueiredotec@gmail.com)
 - [WhatsApp](https://wa.me/5531993750285)
+

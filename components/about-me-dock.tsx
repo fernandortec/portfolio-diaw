@@ -24,15 +24,15 @@ export function AboutMeDock() {
   const copy = locale === "pt-BR" ? {
     portfolio: "OLÁ, EU SOU O FERNANDO",
     title: "Engenheiro de Software Full Stack",
-    bio: "Desenvolvo aplicações web e APIs com React, Node.js e TypeScript. Estou no 2º período de Engenharia de Software na PUC e quero me tornar líder técnico de uma equipe, criando soluções de software que resolvam problemas reais dos usuários. No tempo livre, gosto de jogar, especialmente jogos retrô.",
+    bio: "Desenvolvo aplicações web e APIs com React, Node.js e TypeScript. Estou no 2º período de Engenharia de Software na PUC. Minha experiência inclui integrações com Shopify e pagamentos, pipelines com AWS Lambda e DynamoDB e checkout para reservas de hotéis. No tempo livre, gosto de jogar, especialmente títulos mais antigos.",
     location: "Belo Horizonte, Brasil",
     email: "Enviar e-mail",
-    projects: "Veja o que tenho construído",
+    projects: "Explore meus projetos",
     links: "Links do Fernando",
   } : {
     portfolio: "HI, I’M FERNANDO",
     title: "Full Stack Software Engineer",
-    bio: "I build web applications and APIs with React, Node.js, and TypeScript. I’m in my second semester of Software Engineering at PUC, and my goal is to become a team’s technical lead, creating software solutions that solve real user problems. In my free time, I enjoy gaming, especially retro games.",
+    bio: "I build web applications and APIs with React, Node.js, and TypeScript. I’m in my second semester of Software Engineering at PUC. My experience includes Shopify and payment integrations, AWS Lambda and DynamoDB pipelines, and checkout for hotel bookings. In my free time, I enjoy playing video games, especially older titles.",
     location: "Belo Horizonte, Brazil",
     email: "Send email",
     projects: "Explore my projects",
@@ -40,7 +40,7 @@ export function AboutMeDock() {
   }
   const localizedLinks = links.map((link) => link.label === "Enviar e-mail" ? { ...link, label: copy.email } : link)
   return (
-    <section id="about" className="relative z-[1] mx-auto flex min-h-[min(52rem,100svh)] max-w-6xl flex-col items-center justify-center px-5 py-20 text-center sm:px-8">
+    <section id="about" className="mt-10 relative z-[1] mx-auto flex min-h-[min(52rem,100svh)] max-w-6xl flex-col items-center justify-center px-5 py-20 text-center sm:px-8">
       <div className="max-w-[46rem]">
         <p className="mb-[1.2rem] text-[0.72rem] font-[650] tracking-[0.23em] text-steel-blue-200">{copy.portfolio}</p>
         <h1 id="portfolio-name" className="m-0 text-[clamp(2.7rem,8vw,6.4rem)] font-[620] leading-[1.05] tracking-[-0.055em] text-steel-blue-50 [&_span]:text-steel-blue-200">Fernando Rodrigues<span>.</span></h1>

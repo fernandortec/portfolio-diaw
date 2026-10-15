@@ -1,3 +1,5 @@
+import { useLocale } from "@/components/context/use-locale"
+
 const experiences = [
   {
     period: "Jun 2026 — atual",
@@ -5,7 +7,7 @@ const experiences = [
     title: "Engenheiro de Software com IA nativa",
     context: "IDent",
     description:
-      "Reconstruo a aplicação legada da empresa, usando inteligência artificial no processo de desenvolvimento.",
+      "Trabalho na reconstrução da aplicação legada da IDent, com IA integrada ao fluxo de desenvolvimento.",
     titleEn: "AI-Native Software Engineer",
     contextEn: "IDent",
     descriptionEn: "Rebuilding the company's legacy application with artificial intelligence integrated into the development process.",
@@ -67,48 +69,51 @@ const experiences = [
   },
 ]
 
-export function ExperienceList({ language = "pt" }: { language?: "pt" | "en" }) {
-  const english = language === "en"
-  return (
-    <section
-      id="experience"
-      className="page-section pb-20 pt-12 sm:pb-28"
-    >
-      <div className="mb-8">
-        <p className="section-label">
-          {english ? "CAREER JOURNEY" : "TRAJETÓRIA PROFISSIONAL"}
-        </p>
-        <h2
-          id="experiences-heading"
-          className="section-heading"
-        >
-          {english ? "Experience" : "Experiência"}
-        </h2>
-      </div>
+const focus = [
+  ["Modernização de software", "IA no desenvolvimento"],
+  ["Shopify", "Pagamentos", "AWS Lambda", "DynamoDB"],
+  ["Reservas", "Checkout", "CI/CD"],
+  ["Arquitetura", "Modelagem de dados", "Mentoria"],
+  ["Suvinil", "Automação de processos"],
+  ["APIs bancárias", "Dados financeiros"],
+]
+const focusEn = [
+  ["Software modernization", "AI-assisted development"],
+  ["Shopify", "Payments", "AWS Lambda", "DynamoDB"],
+  ["Bookings", "Checkout", "CI/CD"],
+  ["Architecture", "Data modeling", "Mentoring"],
+  ["Suvinil", "Process automation"],
+  ["Banking APIs", "Financial data"],
+]
 
-      <ol className="m-0 list-none border-t border-charcoal-700/70 p-0">
-        {experiences.map((experience) => (
-          <li
-            key={`${experience.period}-${experience.title}`}
-            className="grid grid-cols-[11rem_minmax(0,1fr)] gap-x-7 border-b border-charcoal-700/70 py-7 max-[560px]:grid-cols-1 max-[560px]:gap-y-3 max-[560px]:py-6"
-          >
-            <p className="m-0 pt-1 text-[0.76rem] font-medium tracking-[0.08em] text-charcoal-300">
-              {english ? experience.periodEn : experience.period}
-            </p>
-            <div>
-              <h3 className="m-0 text-[1.15rem] font-[560] tracking-[-0.025em] text-steel-blue-100">
-                {english ? experience.titleEn : experience.title}
-              </h3>
-              <p className="mb-0 mt-1 text-[0.86rem] text-steel-blue-200">
-                {english ? experience.contextEn : experience.context}
-              </p>
-              <p className="mb-0 mt-3 max-w-[39rem] text-[0.93rem] leading-[1.75] text-charcoal-300">
-                {english ? experience.descriptionEn : experience.description}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ol>
+export function ExperienceList() {
+  const { locale } = useLocale()
+  const english = locale === "en-US"
+  return (
+    <section id="experience" className="page-section pb-24 pt-12 sm:pb-32" aria-labelledby="experiences-heading">
+      <div className="grid grid-cols-1 gap-10 min-[801px]:grid-cols-[0.8fr_1.5fr] min-[801px]:gap-20">
+        <header className="self-start min-[801px]:sticky min-[801px]:top-32">
+          <p className="section-label">{english ? "01 / EXPERIENCE" : "01 / EXPERIÊNCIA"}</p>
+          <h2 id="experiences-heading" className="section-heading">{english ? "Work experience" : "Experiência profissional"}</h2>
+          <p className="mt-5 max-w-xs text-base leading-7 text-charcoal-300 max-[800px]:max-w-xl">{english ? "Work across product teams, from Shopify and payment integrations to hotel checkout and data pipelines." : "Atuei em produtos de e-commerce, pagamentos, reservas de hotéis e pipelines de dados."}</p>
+          <span className="mt-8 inline-flex items-center gap-2 text-xs text-steel-blue-200"><span className="size-1.5 rounded-full bg-steel-blue-300" />{english ? "2020 — present" : "2020 — até aqui"}</span>
+        </header>
+        <ol className="m-0 list-none border-l border-steel-blue-300/20 py-0 pl-5 min-[601px]:pl-[1.8rem]">
+          {experiences.map((experience, index) => (
+            <li key={experience.context} className={`relative mb-5 rounded-2xl border p-5 transition-colors duration-200 hover:border-steel-blue-300/30 min-[601px]:p-[1.8rem] ${index === 0 ? "border-steel-blue-300/25 bg-[linear-gradient(130deg,#19334d88,#0c1722ee)]" : "border-steel-blue-300/10 bg-[#0c1722cc]"}`}>
+              <span className={`absolute left-[-1.65rem] top-[2.1rem] size-[0.65rem] rounded-full border-2 border-steel-blue-400 bg-steel-blue-950 shadow-[0_0_0_6px_#09121b] min-[601px]:left-[-2.15rem] ${index === 0 ? "bg-steel-blue-200 shadow-[0_0_0_6px_#09121b,0_0_20px_#6699cc66]" : ""}`} aria-hidden="true" />
+              <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+                <p className="text-xs text-charcoal-300">{english ? experience.periodEn : experience.period}</p>
+                {index === 0 && <span className="rounded-full border border-steel-blue-300/20 bg-steel-blue-300/10 px-[0.65rem] py-[0.3rem] text-[0.65rem] text-steel-blue-200">{english ? "Currently here" : "Atualmente"}</span>}
+              </div>
+              <h3 className="text-2xl font-semibold tracking-tight text-steel-blue-50">{english ? experience.contextEn : experience.context}</h3>
+              <p className="mt-1.5 text-sm text-steel-blue-200">{english ? experience.titleEn : experience.title}</p>
+              <p className="mt-4 text-sm leading-7 text-charcoal-300">{english ? experience.descriptionEn : experience.description}</p>
+              <div className="mt-5 flex flex-wrap gap-2">{(english ? focusEn : focus)[index].map(tag => <span className="rounded-[0.35rem] border border-steel-blue-300/10 px-[0.6rem] py-[0.3rem] text-[0.65rem] text-charcoal-300" key={tag}>{tag}</span>)}</div>
+            </li>
+          ))}
+        </ol>
+      </div>
     </section>
   )
 }

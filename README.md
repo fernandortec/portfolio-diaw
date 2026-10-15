@@ -76,7 +76,6 @@ Os cards apontam para os repositórios correspondentes no GitHub.
 ### Ferramentas de desenvolvimento
 
 - **Oxlint** — análise estática do código.
-- **React Compiler** via Babel — compilação otimizada de componentes React.
 - **TypeScript** — verificação de tipos durante o build.
 
 As dependências e versões declaradas estão listadas em [`package.json`](./package.json), e as versões resolvidas estão registradas em [`package-lock.json`](./package-lock.json).

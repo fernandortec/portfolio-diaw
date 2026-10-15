@@ -1,4 +1,4 @@
-import { ArrowDown, Globe2, MapPin } from "lucide-react"
+import { ArrowDown, MapPin } from "lucide-react"
 import { Icons } from "@/components/icons"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -19,20 +19,20 @@ const links = [
 ]
 
 export function AboutMeDock() {
-  const { locale, setLocale } = useLocale()
+  const { locale } = useLocale()
 
   const copy = locale === "pt-BR" ? {
-    portfolio: "FERNANDO RODRIGUES · PORTFÓLIO",
+    portfolio: "OLÁ, EU SOU O FERNANDO",
     title: "Engenheiro de Software Full Stack",
-    bio: "Desenvolvo aplicações web e APIs com TypeScript, React e Node.js. Minha experiência inclui sistemas de reservas, pagamentos e integrações bancárias.",
+    bio: "Desenvolvo aplicações web e APIs com React, Node.js e TypeScript. Estou no 2º período de Engenharia de Software na PUC e quero me tornar líder técnico de uma equipe, criando soluções de software que resolvam problemas reais dos usuários. No tempo livre, gosto de jogar, especialmente jogos retrô.",
     location: "Belo Horizonte, Brasil",
     email: "Enviar e-mail",
-    projects: "Conheça meus projetos",
+    projects: "Veja o que tenho construído",
     links: "Links do Fernando",
   } : {
-    portfolio: "FERNANDO RODRIGUES · PORTFOLIO",
+    portfolio: "HI, I’M FERNANDO",
     title: "Full Stack Software Engineer",
-    bio: "I build web applications and APIs with TypeScript, React, and Node.js. My experience includes booking systems, payments, and banking integrations.",
+    bio: "I build web applications and APIs with React, Node.js, and TypeScript. I’m in my second semester of Software Engineering at PUC, and my goal is to become a team’s technical lead, creating software solutions that solve real user problems. In my free time, I enjoy gaming, especially retro games.",
     location: "Belo Horizonte, Brazil",
     email: "Send email",
     projects: "Explore my projects",
@@ -40,15 +40,7 @@ export function AboutMeDock() {
   }
   const localizedLinks = links.map((link) => link.label === "Enviar e-mail" ? { ...link, label: copy.email } : link)
   return (
-    <section className="relative z-[1] mx-auto flex min-h-[min(52rem,100svh)] max-w-6xl flex-col items-center justify-center px-5 py-20 text-center sm:px-8">
-      <div className="language-switcher" role="group">
-        <Globe2 className="language-globe" />
-        {(["en-US", "pt-BR"] as const).map((option) => (
-          <button key={option} type="button" onClick={() => setLocale(option)}>
-            {option.toUpperCase()}
-          </button>
-        ))}
-      </div>
+    <section id="about" className="relative z-[1] mx-auto flex min-h-[min(52rem,100svh)] max-w-6xl flex-col items-center justify-center px-5 py-20 text-center sm:px-8">
       <div className="max-w-[46rem]">
         <p className="mb-[1.2rem] text-[0.72rem] font-[650] tracking-[0.23em] text-steel-blue-200">{copy.portfolio}</p>
         <h1 id="portfolio-name" className="m-0 text-[clamp(2.7rem,8vw,6.4rem)] font-[620] leading-[1.05] tracking-[-0.055em] text-steel-blue-50 [&_span]:text-steel-blue-200">Fernando Rodrigues<span>.</span></h1>
@@ -69,6 +61,7 @@ export function AboutMeDock() {
                     render={
                       <a
                         href={href}
+                        aria-label={label}
                         className={cn(
                           buttonVariants({ variant: "ghost", size: "icon" }),
                           "flex size-11 items-center justify-center rounded-full text-steel-blue-100 transition-[color,background-color,transform] duration-[160ms] ease-in-out hover:-translate-y-0.5 hover:bg-steel-blue-800/60 hover:text-steel-blue-200 [&_svg]:size-[1.15rem]"

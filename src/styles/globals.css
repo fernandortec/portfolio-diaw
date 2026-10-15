@@ -185,40 +185,23 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html,
   body,
   #root {
     @apply min-h-full;
   }
+
   html {
     @apply font-sans;
   }
+
   body {
     @apply min-h-screen bg-background;
-  }
-}
-
-@layer base {
-  html {
-    scroll-padding-top: 2rem;
-  }
-
-  :where(h1, h2, h3, p, a) {
-    overflow-wrap: break-word;
-  }
-
-  a:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 5px;
-    border-radius: 3px;
-  }
-
-  ::selection {
-    background: #336699;
-    color: #ecf2f9;
   }
 }
 
@@ -234,25 +217,40 @@
   .section-heading {
     @apply text-[clamp(2rem,4vw,3rem)] font-semibold leading-tight tracking-[-0.045em] text-steel-blue-50;
   }
+}
 
-  .skip-link {
-    @apply fixed left-4 top-4 z-50 -translate-y-24 rounded-md bg-steel-blue-50 px-4 py-3 text-sm font-medium text-steel-blue-950 focus:translate-y-0;
-  }
+html {
+  scroll-padding-top: 7rem;
+  scroll-behavior: smooth;
+}
 
-  .language-switcher {
-    @apply absolute right-5 top-5 z-[5] inline-flex items-center gap-0.5 rounded-full border border-steel-blue-200/15 bg-steel-blue-950/75 p-1 shadow-[0_8px_28px_rgb(0_0_0_/_25%)] backdrop-blur-xl;
-  }
+:where(h1, h2, h3, p, a) {
+  overflow-wrap: break-word;
+}
 
-  .language-globe {
-    @apply mx-1 size-4 text-steel-blue-200;
-  }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
 
-  .language-switcher button {
-    @apply min-h-8 min-w-9 rounded-full px-2 text-[0.68rem] font-semibold tracking-[0.08em] text-charcoal-300 transition-colors;
-  }
+::selection {
+  background: #336699;
+  color: #ecf2f9;
+}
 
-  .language-switcher button:hover,
-  .language-switcher button[aria-pressed="true"] {
-    @apply bg-steel-blue-800 text-steel-blue-50;
+.project-preview {
+  background: radial-gradient(ellipse at 50% 110%, #407fbf55, transparent 75%), #142433;
+}
+
+.project-preview[data-variant="alternate"] {
+  background: radial-gradient(ellipse at 50% 110%, #94659a44, transparent 75%), #211e2d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
+

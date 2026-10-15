@@ -22,7 +22,7 @@ export function App() {
             className="h-full w-full"
           />
         </div>
-        <a className="skip-link" href="#content">Pular para o conteúdo</a>
+        <a className="fixed left-4 top-4 z-50 -translate-y-24 rounded-md bg-steel-blue-50 px-4 py-3 text-sm font-medium text-steel-blue-950 focus:translate-y-0" href="#content">Pular para o conteúdo</a>
         <div className="relative z-10">
           <FloatingNavbar />
           <main id="content" tabIndex={-1}>

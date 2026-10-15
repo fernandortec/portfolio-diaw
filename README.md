@@ -33,7 +33,7 @@ O portfólio apresenta uma introdução profissional, experiências e projetos s
 - Apresentação profissional e localização.
 - Seção de experiências profissionais com cargo, organização, período e descrição.
 - Grade de projetos com imagens separadas das descrições e links para os repositórios no GitHub. Os cards têm altura conforme o conteúdo, sem cortes de texto.
-- Linha do tempo cronológica com marcos e datas confirmados no histórico público do GitHub; os cards também indicam quando não foi identificado um release formal.
+- Grade de projetos ordenada do mais recente ao mais antigo, com a data do primeiro marco no histórico público do GitHub em destaque em cada card.
 - Links de contato para e-mail, WhatsApp, LinkedIn e GitHub.
 - Grade com uma, duas ou três colunas conforme a largura disponível.
 - Navegação por âncoras, link para pular ao conteúdo e indicação de foco no teclado.

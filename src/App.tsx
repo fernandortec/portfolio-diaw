@@ -1,6 +1,7 @@
 import { AboutMeDock } from "@/components/about-me-dock";
 import { ProjectsGrid } from "@/components/projects-grid";
 import { ExperienceList } from "@/components/experience-list";
+import { ContactSection } from "@/components/contact-section";
 import PatternWaves from "@/components/ui/pattern-waves/index.jsx";
 import type { ReactElement } from "react";
 
@@ -22,6 +23,7 @@ export function App (): ReactElement {
       />
       <ExperienceList />
       <ProjectsGrid />
+      <ContactSection />
     </main>
   )
 }

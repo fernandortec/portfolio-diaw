@@ -188,18 +188,15 @@
   body {
     @apply bg-background text-foreground;
   }
+  html,
+  body,
+  #root {
+    @apply min-h-full;
+  }
   html {
     @apply font-sans;
   }
-}
-html,
-body,
-#root {
-  min-height: 100%;
-}
-
-body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  background: #09121b;
+  body {
+    @apply min-h-screen overflow-x-hidden bg-background;
+  }
 }
